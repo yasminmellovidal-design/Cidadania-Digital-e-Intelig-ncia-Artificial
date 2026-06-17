@@ -1,21 +1,139 @@
-<!-- O código completo HTML5 pode ser encontrado no documento original [1] -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Cidadania Digital & IA</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Estrutura simplificada, veja código original para detalhes -->
-    <header class="navbar">...</header>
+    <div class="grid-cyber-bg"></div> <!-- Malha de fundo futurista -->
+   
+    <header class="header-container">
+        <div class="logo">Cidadania<span>Digital</span></div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#deepfakes">Como Detectar</a></li>
+                <li><a href="#simulador">Detetive IA</a></li>
+                <li><a href="#quiz-section">Desafio Quiz</a></li>
+                <li><a href="#fontes">Fontes</a></li>
+                <li><a href="#denuncie">Denuncie</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="btn-toggle" aria-label="Alternar modo de cor">🌓 Modo Escuro</button>
+    </header>
+
     <main>
-        <section id="inicio">...</section>
-        <section id="guia">...</section>
-        <section id="detetive">...</section>
-        <section id="quiz">...</section>
-        <section id="denuncie">...</section>
+        <section id="home" class="hero-section">
+            <div class="hero-content matrix-card">
+                <h1>Cidadania Digital & IA</h1>
+                <p>O impacto das Deepfakes e da desinformação na sociedade. Torne-se um detetive digital, aprenda a blindar suas redes e combata a mentira automatizada!</p>
+                <div class="hero-buttons">
+                    <a href="#simulador" class="btn-primary">Jogar Simulador</a>
+                    <a href="#quiz-section" class="btn-secondary">Testar Conhecimento</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="deepfakes" class="info-section">
+            <h2 class="neon-title">Manual do Detetive: Sinais de Alerta 🔎</h2>
+            <div class="card-container">
+                <div class="card 3d-effect">
+                    <h3>👁️ Falhas Visuais</h3>
+                    <p>Piscadas ausentes ou excessivas, sombras desalinhadas no rosto e contornos borrados entre o cabelo e as orelhas.</p>
+                </div>
+                <div class="card 3d-effect">
+                    <h3>🔊 Áudio Sintético</h3>
+                    <p>Falta de respiração natural, tons excessivamente robóticos e movimentos de lábios que não sincronizam com o som.</p>
+                </div>
+                <div class="card 3d-effect">
+                    <h3>💡 Contexto Absurdo</h3>
+                    <p>Discursos bombásticos ou fora de caráter de líderes políticos. Sempre duvide de exclusividades absolutas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulador" class="simulador-section matrix-card">
+            <h2 class="neon-title">Laboratório Detetive IA 🔬</h2>
+            <p class="section-desc">Analise o caso abaixo e use seus reflexos para decidir se a mídia é real ou falsa!</p>
+           
+            <div class="simulador-box">
+                <div class="caso-midia">
+                    <div class="midia-placeholder">
+                        <span class="emoji-animado">🤖🎥</span>
+                        <p><strong>Caso #1024:</strong> Vídeo vazado mostra o presidente de um banco declarando que o dinheiro sumirá amanhã. A voz está trêmula e as bordas do rosto piscam levemente.</p>
+                    </div>
+                </div>
+                <div class="simulador-controls">
+                    <button class="btn-simula real" onclick="verificarCaso('real')">É Real!</button>
+                    <button class="btn-simula fake" onclick="verificarCaso('fake')">É Deepfake!</button>
+                </div>
+                <div id="simulador-feedback" class="feedback-box hidden"></div>
+            </div>
+        </section>
+
+        <section id="quiz-section" class="quiz-container matrix-card">
+            <h2 class="neon-title">Desafio Cidadão do Futuro 🏆</h2>
+            <form id="quiz-form">
+                <div class="quiz-item">
+                    <p class="question">1. Você recebeu uma notícia bombástica por mensagem de um parente. Qual o primeiro passo?</p>
+                    <label class="radio-label">
+                        <input type="radio" name="q1" value="errado" required> Repassar imediatamente em todos os grupos.
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q1" value="correto"> Não compartilhar e pesquisar o título em fontes confiáveis.
+                    </label>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="question">2. Qual o principal perigo das deepfakes de áudio e vídeo na sociedade?</p>
+                    <label class="radio-label">
+                        <input type="radio" name="q2" value="correto"> Manipular a opinião pública com mentiras altamente realistas.
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q2" value="errado"> Deixar a internet mais engraçada e divertida.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Validar Respostas</button>
+            </form>
+            <div id="quiz-result" class="result-box hidden"></div>
+        </section>
+
+        <section id="fontes" class="fontes-section matrix-card">
+            <h2 class="neon-title">Onde Checar Fatos? 🛡️</h2>
+            <div class="fontes-grid">
+                <a href="https://globo.com" target="_blank" class="fonte-link">Fato ou Fake</a>
+                <a href="https://aosfatos.org" target="_blank" class="fonte-link">Aos Fatos</a>
+                <a href="https://uol.com.br" target="_blank" class="fonte-link">Agência Lupa</a>
+            </div>
+        </section>
+
+        <section id="denuncie" class="form-section matrix-card">
+            <h2 class="neon-title">Canal de Alerta Comunitário 🚨</h2>
+            <form id="report-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="user-name">Codinome Digital</label>
+                    <input type="text" id="user-name" name="name" placeholder="Ex: Cyber_User" required>
+                </div>
+                <div class="form-group">
+                    <label for="suspect-url">Link ou Plataforma da Mídia Suspeita</label>
+                    <input type="text" id="suspect-url" name="url" placeholder="Ex: TikTok ou link do site" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Por que essa mídia parece uma manipulação por IA?</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Descreva os sinais tridimensionais ou sonoros estranhos..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar Alerta de Fake News</button>
+            </form>
+        </section>
     </main>
-    <script src="js/script.js"></script>
+
+    <footer class="footer-container">
+        <p>&copy; 2026 - Projeto Cidadania Digital e Inteligência Artificial. Estética Futurista de Conscientização Comunitária.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
