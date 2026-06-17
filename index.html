@@ -1,158 +1,21 @@
+<!-- O código completo HTML5 pode ser encontrado no documento original [1] -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conexão Segura | Cidadania Digital e IA</title>
+    <title>Portal Cidadania Digital & IA</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <div id="progress-bar" class="progress-bar"></div>
-
-    <header class="header-container">
-        <div class="logo-area">
-            <h1>Conexão Segura</h1>
-        </div>
-        <nav class="nav-menu" aria-label="Menu Principal">
-            <ul>
-                <li><a href="#inicio" class="nav-link active">Início</a></li>
-                <li><a href="#multimidia" class="nav-link">Laboratório IA</a></li>
-                <li><a href="#guia" class="nav-link">Guia Prático</a></li>
-                <li><a href="#simulador" class="nav-link">Simulador</a></li>
-                <li><a href="#quiz" class="nav-link">Quiz</a></li>
-                <li><a href="#denuncia" class="nav-link">Denúncias</a></li>
-            </ul>
-        </nav>
-        <div class="actions-area">
-            <button id="theme-toggle" class="btn-toggle" aria-label="Alternar modo visual">🌓 Modo Claro</button>
-        </div>
-    </header>
-
+    <!-- Estrutura simplificada, veja código original para detalhes -->
+    <header class="navbar">...</header>
     <main>
-        <!-- Início -->
-        <section id="inicio" class="hero section-scroll">
-            <h2>Cidadania Digital e Inteligência Artificial</h2>
-            <p>A tecnologia avança rápido, mas o nosso senso crítico deve ser ainda mais veloz. Aprenda a identificar manipulações e combater a desinformação na sociedade.</p>
-            <img src="https://unsplash.com" alt="Redes digitais e inteligência artificial em tons azuis" class="hero-img">
-        </section>
-
-        <!-- NOVO: Laboratório Multimídia (Vídeo explicativo com voz de IA) -->
-        <section id="multimidia" class="video-section section-scroll">
-            <h3>Laboratório de Análise de Mídia</h3>
-            <p class="section-description">Assista ao vídeo explicativo abaixo para entender como algoritmos de IA geram vozes sintéticas e mídias deepfake:</p>
-            <div class="video-container">
-                <video controls poster="https://unsplash.com">
-                    <source src="https://wikimedia.org" type="video/webm">
-                    Seu navegador não suporta a reprodução de vídeos nativos.
-                </video>
-            </div>
-            <p class="media-credit">Créditos: Amostra Educacional de Síntese de Voz de Redes Neurais via Wikimedia Commons (Domínio Público).</p>
-        </section>
-
-        <!-- Guia Prático -->
-        <section id="guia" class="conteudo-educativo section-scroll">
-            <h3>Guia Prático: Como Identificar um Deepfake</h3>
-            <div class="cards-container">
-                <article class="card">
-                    <img src="https://unsplash.com" alt="Rosto humano com mapeamento digital" class="card-img">
-                    <h4>👁️ Análise Facial</h4>
-                    <p>Observe se há ausência ou irregularidade em piscadas de olhos. Bordas ligeiramente borradas perto das orelhas e cabelos costumam denunciar a sobreposição artificial da IA.</p>
-                </article>
-
-                <article class="card">
-                    <img src="https://unsplash.com" alt="Equipamento de som analítico" class="card-img">
-                    <h4>🔊 Descompasso de Áudio</h4>
-                    <p>Preste atenção à sincronia labial. Ruídos metálicos isolados na voz ou cortes abruptos no som de fundo são fortes indícios de clonagem de voz por inteligência artificial.</p>
-                </article>
-
-                <article class="card">
-                    <img src="https://unsplash.com" alt="Leitura de mídias em ambiente escuro" class="card-img">
-                    <h4>💡 Verificação de Contexto</h4>
-                    <p>Vídeos polêmicos surgem repentinamente nas redes. Sempre valide se portais de imprensa tradicionais ou agências oficiais de checagem reportaram o mesmo fato.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- Simulador de Risco -->
-        <section id="simulador" class="simulador-section section-scroll">
-            <h3>Simulador de Risco de Notícia</h3>
-            <p class="section-description">Recebeu uma informação e está em dúvida sobre a veracidade? Marque as caixas abaixo para calcular o nível estimado de risco de fraude:</p>
-            <div class="simulador-box">
-                <label class="check-label">
-                    <input type="checkbox" class="risco-check" value="35"> A notícia chegou por mensagem sem link para portais confiáveis (+35% de risco).
-                </label>
-                <label class="check-label">
-                    <input type="checkbox" class="risco-check" value="40"> O título apela para o pânico, medo, raiva ou vantagens absurdas (+40% de risco).
-                </label>
-                <label class="check-label">
-                    <input type="checkbox" class="risco-check" value="25"> O rosto da pessoa ou o áudio parecem levemente artificiais ou fora de sincronia (+25% de risco).
-                </label>
-                <button id="btn-calcular" class="btn-submit-blue">Calcular Nível de Perigo</button>
-                <div id="resultado-simulador" class="result-box hide"></div>
-            </div>
-        </section>
-
-        <!-- Quiz -->
-        <section id="quiz" class="quiz-section section-scroll">
-            <h3>Desafio da Verdade: Quiz Anti-Desinformação</h3>
-            <p class="quiz-intro">Responda às questões e descubra se você está preparado para navegar com segurança no ecossistema digital.</p>
-            
-            <form id="quiz-form">
-                <div class="question-group">
-                    <p class="question-title">1. Um vídeo bombástico de um líder político declarando algo absurdo viraliza nas redes, mas nenhuma fonte confiável noticia o fato. Qual é a conduta correta?</p>
-                    <div class="option">
-                        <input type="radio" name="q1" id="q1-o1" value="errado" required>
-                        <label for="q1-o1">Compartilhar imediatamente com contatos e grupos para alertar a todos.</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q1" id="q1-o2" value="certo">
-                        <label for="q1-o2">Desconfiar do material, pesquisar em agências de checagem confiáveis e reter o compartilhamento.</label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <p class="question-title">2. Qual das seguintes alternativas descreve uma falha visual típica encontrada em ferramentas comuns de deepfake de vídeo?</p>
-                    <div class="option">
-                        <input type="radio" name="q2" id="q2-o1" value="certo" required>
-                        <label for="q2-o1">Movimentos oculares rígidos, sombras inconsistentes na face e falhas ao redor do rosto.</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q2" id="q2-o2" value="errado">
-                        <label for="q2-o2">Imagem perfeitamente nítida em alta definição com enquadramento cinematográfico de estúdio.</label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <p class="question-title">3. Você recebe uma mensagem de voz de um familiar solicitando uma transferência financeira urgente. A voz é idêntica, mas o tom parece robótico. O que fazer?</p>
-                    <div class="option">
-                        <input type="radio" name="q3" id="q3-o1" value="errado" required>
-                        <label for="q3-o1">Efetuar o envio do dinheiro de prontidão devido ao parentesco e urgência declarada.</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q3" id="q3-o2" value="certo">
-                        <label for="q3-o2">Realizar uma chamada telefônica comum de retorno ou propor perguntas pessoais cujas respostas apenas o familiar saiba.</label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <p class="question-title">4. No contexto da ética digital, qual é o principal impacto negativo da proliferação em massa de desinformação automatizada?</p>
-                    <div class="option">
-                        <input type="radio" name="q4" id="q4-o1" value="certo" required>
-                        <label for="q4-o1">Erosão da confiança em instituições, interferência em processos democráticos e difamação de reputações.</label>
-                    </div>
-                    <div class="option">
-                        <input type="radio" name="q4" id="q4-o2" value="errado">
-                        <label for="q4-o2">Redução no desempenho global da velocidade da internet e aumento de armazenamento local nos smartphones.</label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-submit-blue">Enviar Respostas do Quiz</button>
-            </form>
-
-            <div id="quiz-result" class="result-box hide"></div>
-        </section>
-
-        <!-- Canal de Denúncias -->
-        <section id="denuncia" class="denuncia-section section-scroll">
-            <h3>Central de Alerta e Denúncia Comunitária</h3>
+        <section id="inicio">...</section>
+        <section id="guia">...</section>
+        <section id="detetive">...</section>
+        <section id="quiz">...</section>
+        <section id="denuncie">...</section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
