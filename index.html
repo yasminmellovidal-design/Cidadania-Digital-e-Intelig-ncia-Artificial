@@ -1,0 +1,54 @@
+        <section class="quiz-section">
+            <h3>Desafio da Verdade: Quiz Anti-Desinformação</h3>
+            <p>Teste seus conhecimentos e descubra se você consegue detectar mentiras digitais.</p>
+            
+            <form id="quiz-form">
+                <!-- Pergunta 1 -->
+                <div class="question-group">
+                    <p>1. Um vídeo de um político declarando algo absurdo surge na rede, mas nenhum portal de notícias confiável publicou a respeito. O que você faz?</p>
+                    <label>
+                        <input type="radio" name="q1" value="errado" required> Compartilho imediatamente nos grupos de família.
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="certo"> Desconfio, busco em agências de checagem e não compartilho.
+                    </label>
+                </div>
+
+                <!-- Pergunta 2 -->
+                <div class="question-group">
+                    <p>2. Qual das alternativas aponta uma característica técnica comum encontrada em deepfakes de vídeo ruins?</p>
+                    <label>
+                        <input type="radio" name="q2" value="certo" required> Movimentos de olhos artificiais e falta de sincronia na fala.
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="errado"> Alta definição perfeita e áudio de estúdio de cinema.
+                    </label>
+                </div>
+
+                <!-- Nova Pergunta 3 -->
+                <div class="question-group">
+                    <p>3. Você recebeu um áudio de voz urgente de um amigo pedindo dinheiro emprestado, mas o tom parece um pouco robótico e mecânico. O que é mais seguro fazer?</p>
+                    <label>
+                        <input type="radio" name="q3" value="errado" required> Fazer o Pix imediatamente para ajudar o amigo o quanto antes.
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="certo"> Ligar de volta por chamada normal ou fazer uma pergunta pessoal que só ele saberia responder.
+                    </label>
+                </div>
+
+                <!-- Nova Pergunta 4 -->
+                <div class="question-group">
+                    <p>4. Qual é o principal perigo das "Deepfakes" criadas de forma maliciosa na internet?</p>
+                    <label>
+                        <input type="radio" name="q4" value="certo" required> Destruir reputações, fraudar identidades e manipular debates políticos.
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="errado"> Ocupar muito espaço de armazenamento nos servidores da nuvem.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Respostas</button>
+            </form>
+
+            <div id="quiz-result" class="result-box hide"></div>
+        </section>
