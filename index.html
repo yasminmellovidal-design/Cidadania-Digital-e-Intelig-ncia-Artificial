@@ -1,49 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Segura | Cidadania Digital e IA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h1>Conexão Segura</h1>
+        <button id="theme-toggle" class="btn-toggle" aria-label="Alternar modo visual">🌓 Modo Escuro</button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Cidadania Digital e Inteligência Artificial</h2>
+            <p>A tecnologia avança rápido, mas o nosso senso crítico deve ser ainda mais veloz. Aprenda a identificar manipulações e combater a desinformação na sociedade.</p>
+        </section>
+
+        <section class="conteudo-educativo">
+            <h3>Guia Prático: Como Identificar um Deepfake</h3>
+            <div class="cards-container">
+                <article class="card">
+                    <h4>👁️ Análise Facial</h4>
+                    <p>Observe se há ausência ou irregularidade em piscadas de olhos. Bordas ligeiramente borradas perto das orelhas e cabelos costumam denunciar a sobreposição artificial da IA.</p>
+                </article>
+                <article class="card">
+                    <h4>🔊 Descompasso de Áudio</h4>
+                    <p>Preste atenção à sincronia labial. Ruídos metálicos isolados na voz ou cortes abruptos no som de fundo são fortes indícios de clonagem de voz por inteligência artificial.</p>
+                </article>
+                <article class="card">
+                    <h4>💡 Verificação de Contexto</h4>
+                    <p>Vídeos polêmicos surgem repentinamente nas redes. Sempre valide se portais de imprensa tradicionais ou agências oficiais de checagem reportaram o mesmo fato.</p>
+                </article>
+            </div>
+        </section>
+
         <section class="quiz-section">
             <h3>Desafio da Verdade: Quiz Anti-Desinformação</h3>
-            <p>Teste seus conhecimentos e descubra se você consegue detectar mentiras digitais.</p>
+            <p>Responda às questões e descubra se você está preparado para navegar com segurança no ecossistema digital.</p>
             
             <form id="quiz-form">
                 <!-- Pergunta 1 -->
                 <div class="question-group">
-                    <p>1. Um vídeo de um político declarando algo absurdo surge na rede, mas nenhum portal de notícias confiável publicou a respeito. O que você faz?</p>
+                    <p>1. Um vídeo bombástico de um líder político declarando algo absurdo viraliza nas redes, mas nenhuma fonte confiável noticia o fato. Qual é a conduta correta?</p>
                     <label>
-                        <input type="radio" name="q1" value="errado" required> Compartilho imediatamente nos grupos de família.
+                        <input type="radio" name="q1" value="errado" required> Compartilhar imediatamente com contatos e grupos para alertar a todos.
                     </label>
                     <label>
-                        <input type="radio" name="q1" value="certo"> Desconfio, busco em agências de checagem e não compartilho.
+                        <input type="radio" name="q1" value="certo"> Desconfiar do material, pesquisar em agências de checagem confiáveis e reter o compartilhamento.
                     </label>
                 </div>
 
                 <!-- Pergunta 2 -->
                 <div class="question-group">
-                    <p>2. Qual das alternativas aponta uma característica técnica comum encontrada em deepfakes de vídeo ruins?</p>
+                    <p>2. Qual das seguintes alternativas descreve uma falha visual típica encontrada em ferramentas comuns de deepfake de vídeo?</p>
                     <label>
-                        <input type="radio" name="q2" value="certo" required> Movimentos de olhos artificiais e falta de sincronia na fala.
+                        <input type="radio" name="q2" value="certo" required> Movimentos oculares rígidos, sombras inconsistentes na face e falhas ao redor do rosto.
                     </label>
                     <label>
-                        <input type="radio" name="q2" value="errado"> Alta definição perfeita e áudio de estúdio de cinema.
-                    </label>
-                </div>
-
-                <!-- Nova Pergunta 3 -->
-                <div class="question-group">
-                    <p>3. Você recebeu um áudio de voz urgente de um amigo pedindo dinheiro emprestado, mas o tom parece um pouco robótico e mecânico. O que é mais seguro fazer?</p>
-                    <label>
-                        <input type="radio" name="q3" value="errado" required> Fazer o Pix imediatamente para ajudar o amigo o quanto antes.
-                    </label>
-                    <label>
-                        <input type="radio" name="q3" value="certo"> Ligar de volta por chamada normal ou fazer uma pergunta pessoal que só ele saberia responder.
+                        <input type="radio" name="q2" value="errado"> Imagem perfeitamente nítida em alta definição com enquadramento cinematográfico de estúdio.
                     </label>
                 </div>
 
-                <!-- Nova Pergunta 4 -->
+                <!-- Pergunta 3 -->
                 <div class="question-group">
-                    <p>4. Qual é o principal perigo das "Deepfakes" criadas de forma maliciosa na internet?</p>
+                    <p>3. Você recebe uma mensagem de voz de um familiar solicitando uma transferência financeira urgente. A voz é idêntica, mas o tom parece robótico. O que fazer?</p>
                     <label>
-                        <input type="radio" name="q4" value="certo" required> Destruir reputações, fraudar identidades e manipular debates políticos.
+                        <input type="radio" name="q3" value="errado" required> Efetuar o envio do dinheiro de prontidão devido ao parentesco e urgência declarada.
                     </label>
                     <label>
-                        <input type="radio" name="q4" value="errado"> Ocupar muito espaço de armazenamento nos servidores da nuvem.
+                        <input type="radio" name="q3" value="certo"> Realizar uma chamada telefônica comum de retorno ou propor perguntas pessoais cujas respostas apenas o familiar saiba.
+                    </label>
+                </div>
+
+                <!-- Pergunta 4 -->
+                <div class="question-group">
+                    <p>4. No contexto da ética digital, qual é o principal impacto negativo da proliferação em massa de desinformação automatizada?</p>
+                    <label>
+                        <input type="radio" name="q4" value="certo" required> Erosão da confiança em instituições, interferência em processos democráticos e difamação de reputações.
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="errado"> Redução no desempenho global da velocidade da internet e aumento de armazenamento local nos smartphones.
                     </label>
                 </div>
 
@@ -52,3 +91,13 @@
 
             <div id="quiz-result" class="result-box hide"></div>
         </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Portal Conexão Segura. Conteúdo autoral focado na conscientização comunitária.</p>
+        <p>Projeto acadêmico vinculado à tag oficial #cidadaniadigital2026.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
