@@ -1,28 +1,29 @@
----
-
-### 🎨 2. `css/style.css`
-```css
-/* Gerenciamento Centralizado de Variáveis de Cores (Tema Claro/Escuro) */
+/* Paleta Cibernética: Preto e Azul de Alta Performance */
 :root {
+    --bg-primary: #0a0f1d;
+    --bg-card: #111827;
+    --text-color: #f1f5f9;
+    --accent-color: #3b82f6;
+    --accent-glow: #1d4ed8;
+    --border-color: #1f2937;
+    --header-height: 80px;
+    --alert-safe: #059669;
+    --alert-warning: #2563eb;
+    --alert-danger: #dc2626;
+}
+
+[data-theme="light"] {
     --bg-primary: #f8fafc;
     --bg-card: #ffffff;
     --text-color: #1e293b;
-    --accent-color: #2563eb;
-    --success-color: #16a34a;
+    --accent-color: #1d4ed8;
+    --accent-glow: #3b82f6;
     --border-color: #cbd5e1;
-    --header-height: 80px;
+    --alert-safe: #16a34a;
+    --alert-warning: #2563eb;
+    --alert-danger: #df2626;
 }
 
-[data-theme="dark"] {
-    --bg-primary: #0f172a;
-    --bg-card: #1e293b;
-    --text-color: #f1f5f9;
-    --accent-color: #3b82f6;
-    --success-color: #22c55e;
-    --border-color: #334155;
-}
-
-/* Reset Global de Layout e Transições de Acessibilidade */
 * {
     margin: 0;
     padding: 0;
@@ -42,19 +43,19 @@ body {
     line-height: 1.6;
 }
 
-/* Barra de Progresso Superior */
+/* Barra de Leitura */
 .progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     height: 4px;
-    background-color: var(--success-color);
+    background-color: var(--accent-color);
     width: 0%;
     z-index: 1000;
     transition: width 0.1s ease;
 }
 
-/* Header Fixo e Navegação Semântica com Flexbox */
+/* Header Dinâmico */
 .header-container {
     position: fixed;
     top: 0;
@@ -68,53 +69,58 @@ body {
     background-color: var(--bg-card);
     border-bottom: 2px solid var(--border-color);
     z-index: 900;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .logo-area h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--accent-color);
+    letter-spacing: 0.5px;
 }
 
 .nav-menu ul {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .nav-link {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
-    font-size: 1rem;
-    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.7rem;
     border-radius: 4px;
 }
 
 .nav-link:hover, .nav-link.active {
-    color: var(--accent-color);
-    background-color: var(--bg-primary);
+    color: #ffffff;
+    background-color: var(--accent-color);
 }
 
 .btn-toggle {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    background-color: var(--accent-color);
-    color: #ffffff;
-    border: none;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
     border-radius: 6px;
     font-weight: 600;
 }
 
-/* Container do Corpo Principal */
+.btn-toggle:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
 main {
     max-width: 1100px;
     margin: calc(var(--header-height) + 2.5rem) auto 2.5rem auto;
     padding: 0 1.5rem;
 }
 
-/* Imagens Dinâmicas */
+/* Banner Principal */
 .hero {
     text-align: center;
     margin-bottom: 4rem;
@@ -137,15 +143,46 @@ main {
     max-height: 380px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color);
 }
 
-/* Estrutura de Seção e Cards */
-.conteudo-educativo h3, .simulador-section h3, .quiz-section h3, .denuncia-section h3 {
-    font-size: 1.7rem;
+/* Multimídia / Player */
+.video-section {
+    background-color: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 3rem;
+}
+
+.video-container {
+    max-width: 720px;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+video {
+    width: 100%;
+    display: block;
+    background: #000;
+}
+
+.media-credit {
+    font-size: 0.8rem;
+    text-align: center;
+    opacity: 0.6;
+}
+
+/* Estrutura de Títulos e Grade de Blocos */
+.conteudo-educativo h3, .video-section h3, .simulador-section h3, .quiz-section h3, .denuncia-section h3 {
+    font-size: 1.6rem;
     margin-bottom: 1rem;
     border-left: 5px solid var(--accent-color);
     padding-left: 0.75rem;
+    color: var(--accent-color);
 }
 
 .section-description {
@@ -165,13 +202,13 @@ main {
     border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
 .card-img {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    filter: grayscale(30%) contrast(110%);
 }
 
 .card h4 {
@@ -189,10 +226,10 @@ main {
 .card:hover {
     transform: translateY(-4px);
     border-color: var(--accent-color);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
-/* Painéis de Formulários e Interatividade */
+/* Painéis de Operação */
 .simulador-section, .quiz-section, .denuncia-section {
     background-color: var(--bg-card);
     padding: 2.5rem;
@@ -210,6 +247,11 @@ main {
     border-radius: 6px;
     margin-bottom: 1rem;
     cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+.check-label:hover {
+    border-color: var(--accent-color);
 }
 
 .risco-check {
@@ -218,12 +260,7 @@ main {
     cursor: pointer;
 }
 
-/* Questionários do Quiz */
-.quiz-intro {
-    margin-bottom: 2rem;
-    opacity: 0.85;
-}
-
+/* Perguntas e Respostas */
 .question-group {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
@@ -243,10 +280,12 @@ main {
     margin: 0.7rem 0;
     padding: 0.6rem;
     border-radius: 6px;
+    border: 1px solid transparent;
 }
 
 .option:hover {
     background-color: var(--bg-primary);
+    border-color: var(--border-color);
 }
 
 .option input[type="radio"] {
@@ -262,7 +301,7 @@ main {
     width: 100%;
 }
 
-/* Entrada de Dados e Formulários Gerais */
+/* Caixas de Texto */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -283,26 +322,32 @@ main {
     font-size: 1rem;
 }
 
-/* Botões */
-.btn-submit {
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Botão Azul Temático */
+.btn-submit-blue {
     display: block;
     width: 100%;
     padding: 1.1rem;
-    background-color: var(--success-color);
+    background-color: var(--accent-color);
     color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.btn-submit:hover {
-    opacity: 0.95;
-    transform: scale(1.005);
+.btn-submit-blue:hover {
+    background-color: var(--accent-glow);
+    transform: scale(1.002);
 }
 
-/* Caixas Dinâmicas de Resposta (Renderização de Dados) */
+/* Caixas Dinâmicas Coloridas */
 .result-box {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -313,25 +358,24 @@ main {
 }
 
 .result-box.sucesso {
-    background-color: rgba(22, 163, 74, 0.15);
-    border: 2px solid var(--success-color);
+    background-color: rgba(5, 150, 105, 0.15);
+    border: 2px solid var(--alert-safe);
 }
 
 .result-box.alerta-baixo {
-    background-color: rgba(37, 99, 235, 0.15);
-    border: 2px solid var(--accent-color);
+    background-color: rgba(59, 130, 246, 0.15);
+    border: 2px solid var(--alert-warning);
 }
 
 .result-box.alerta-alto {
     background-color: rgba(220, 38, 38, 0.15);
-    border: 2px solid #dc2626;
+    border: 2px solid var(--alert-danger);
 }
 
 .hide {
     display: none;
 }
 
-/* Footer Rodapé */
 footer {
     text-align: center;
     padding: 2.5rem;
@@ -344,7 +388,7 @@ footer p {
     margin: 0.2rem 0;
 }
 
-/* 📱 Media Queries Avançadas para Responsividade Mobile */
+/* Responsividade Mobile */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -358,12 +402,12 @@ footer p {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.6rem;
     }
 
     .nav-link {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.5rem;
     }
 
     .btn-toggle {
@@ -384,7 +428,7 @@ footer p {
         font-size: 1.8rem;
     }
 
-    .quiz-section, .simulador-section, .denuncia-section {
+    .quiz-section, .simulador-section, .denuncia-section, .video-section {
         padding: 1.5rem;
     }
 }
