@@ -1,35 +1,65 @@
-    // --- Funcionalidade 2: Validador do Quiz Anti-Desinformação ---
+/**
+ * Garante a inicialização segura dos scripts apenas após o 
+ * carregamento completo da estrutura DOM da árvore HTML.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // ==========================================
+    // FUNCIONALIDADE 1: CONTROLE DE ACESSIBILIDADE (TEMA ESCURO)
+    // ==========================================
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    
+    themeToggleBtn.addEventListener("click", () => {
+        // Armazena o estado atual da propriedade customizada
+        const currentTheme = document.body.getAttribute("data-theme");
+        
+        if (currentTheme === "dark") {
+            document.body.removeAttribute("data-theme");
+            themeToggleBtn.textContent = "🌓 Modo Escuro";
+        } else {
+            document.body.setAttribute("data-theme", "dark");
+            themeToggleBtn.textContent = "☀️ Modo Claro";
+        }
+    });
+
+    // ==========================================
+    // FUNCIONALIDADE 2: PROCESSAMENTO E VALIDAÇÃO DO QUIZ
+    // ==========================================
     const quizForm = document.getElementById("quiz-form");
     const resultBox = document.getElementById("quiz-result");
 
     quizForm.addEventListener("submit", (event) => {
-        // Evita o recarregamento padrão da página
+        // Bloqueia a submissão padrão que recarregaria a página no navegador
         event.preventDefault();
 
-        // Captura e armazenamento das 4 respostas usando variáveis
-        const answerOne = quizForm.elements["q1"].value;
-        const answerTwo = quizForm.elements["q2"].value;
-        const answerThree = quizForm.elements["q3"].value;
-        const answerFour = quizForm.elements["q4"].value;
+        // Declaração de variáveis locais para o processamento das informações
+        const ans1 = quizForm.elements["q1"].value;
+        const ans2 = quizForm.elements["q2"].value;
+        const ans3 = quizForm.elements["q3"].value;
+        const ans4 = quizForm.elements["q4"].value;
         
-        let score = 0;
+        let scoreCounter = 0;
 
-        // Processamento das informações antes de exibir na tela
-        if (answerOne === "certo") score += 1;
-        if (answerTwo === "certo") score += 1;
-        if (answerThree === "certo") score += 1;
-        if (answerFour === "certo") score += 1;
+        // Validação condicional das respostas selecionadas pelo usuário
+        if (ans1 === "certo") scoreCounter += 1;
+        if (ans2 === "certo") scoreCounter += 1;
+        if (ans3 === "certo") scoreCounter += 1;
+        if (ans4 === "certo") scoreCounter += 1;
 
-        // Manipulação dinâmica do DOM para o resultado
+        // Atualização e exibição dinâmica da interface com base no contador
         resultBox.classList.remove("hide");
         resultBox.classList.add("sucesso");
         
-        // Mensagem personalizada com base na pontuação total (de 0 a 4)
-        if (score === 4) {
-            resultBox.textContent = `Perfeito! Você acertou ${score} de 4 questões. Você é um mestre da cidadania digital!`;
-        } else if (score >= 2) {
-            resultBox.textContent = `Bom trabalho! Você acertou ${score} de 4 questões. Fique atento aos detalhes para não ser enganado.`;
+        // Estrutura lógica para formatação da mensagem personalizada final
+        if (scoreCounter === 4) {
+            resultBox.textContent = `Excelente! Você acertou todas as ${scoreCounter} questões. Você possui um nível exemplar de Cidadania Digital!`;
+        } else if (scoreCounter >= 2) {
+            resultBox.textContent = `Bom desempenho! Você acertou ${scoreCounter} de 4 questões. Continue atento aos sinais de mídias falsas.`;
         } else {
-            resultBox.textContent = `Você acertou apenas ${score} de 4 questões. Recomendamos ler o portal com mais atenção para se proteger!`;
+            resultBox.textContent = `Você acertou apenas ${scoreCounter} de 4 questões. Recomendamos revisar as orientações do nosso guia para se proteger melhor!`;
         }
+
+        // Move a tela suavemente até a caixa de resultados
+        resultBox.scrollIntoView({ behavior: 'smooth' });
     });
+});
