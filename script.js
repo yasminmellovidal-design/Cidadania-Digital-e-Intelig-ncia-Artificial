@@ -1,7 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. CONTROLE DE ACESSIBILIDADE (TEMA ESCURO) ---
+    // ==========================================
+    // 1. BARRA DE PROGRESSO DE LEITURA SUPERIOR
+    // ==========================================
+    const progressBar = document.getElementById("progress-bar");
+    
+    window.addEventListener("scroll", () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+            const progress = (window.scrollY / totalHeight) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+    });
+
+    // ==========================================
+    // 2. ALTERNADOR DE TEMA (MODO CLARO / ESCURO)
+    // ==========================================
     const themeToggleBtn = document.getElementById("theme-toggle");
+    
     themeToggleBtn.addEventListener("click", () => {
         const currentTheme = document.body.getAttribute("data-theme");
         if (currentTheme === "dark") {
@@ -13,99 +29,116 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 2. FILTRO DINÂMICO DE MÍDIAS (ABAS INTERATIVAS) ---
-    const tabButtons = document.querySelectorAll(".btn-tab");
-    const tabContents = document.querySelectorAll(".tab-content");
+    // ==========================================
+    // 3. MENU DE NAVEGAÇÃO COMPLETO COM LINKS ATIVOS
+    // ==========================================
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll(".section-scroll");
 
-    tabButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            // Remove classe ativa de todos os botões
-            tabButtons.forEach(btn => btn.classList.remove("active"));
-            // Esconde todos os conteúdos
-            tabContents.forEach(content => content.classList.add("hide"));
+    // Efeito visual de link ativo sincronizado com a rolagem
+    window.addEventListener("scroll", () => {
+        let currentSectionId = "";
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const headerHeight = 100; // Margem de segurança fixa
+            if (window.scrollY >= (sectionTop - headerHeight)) {
+                currentSectionId = section.getAttribute("id");
+            }
+        });
 
-            // Ativa o botão clicado
-            button.classList.add("active");
-            // Mostra o conteúdo correspondente
-            const targetId = `tab-${button.getAttribute("data-target")}`;
-            document.getElementById(targetId).classList.remove("hide");
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSectionId}`) {
+                link.classList.add("active");
+            }
         });
     });
 
-    // --- 3. SIMULADOR DE RISCO (CÁLCULO MATEMÁTICO VIA VARIÁVEIS) ---
+    // ==========================================
+    // 4. SIMULADOR DE RISCO (CÁLCULO DINÂMICO)
+    // ==========================================
     const btnCalcular = document.getElementById("btn-calcular");
     const resultadoSimulador = document.getElementById("resultado-simulador");
 
     btnCalcular.addEventListener("click", () => {
         const checkboxes = document.querySelectorAll(".risco-check");
-        let totalRisco = 0;
+        let totalRiskValue = 0;
 
-        // Processa as informações marcadas pelo usuário antes de exibir
+        // Processamento aritmético dos dados locais marcados
         checkboxes.forEach(box => {
             if (box.checked) {
-                totalRisco += parseInt(box.value);
+                totalRiskValue += parseInt(box.value);
             }
         });
 
+        // Configuração estrutural do elemento DOM resultante
         resultadoSimulador.classList.remove("hide");
-        resultadoSimulador.className = "result-box"; // Limpa estados anteriores
+        resultadoSimulador.className = "result-box"; // Reset de classes de alerta anteriores
 
-        if (totalRisco === 0) {
-            resultadoSimulador.textContent = "Risco Mínimo (0%): A notícia apresenta características seguras, mas continue checando fontes oficiais.";
-            resultadoSimulador.style.border = "2px solid var(--success-color)";
-        } else if (totalRisco <= 40) {
-            resultadoSimulador.textContent = `Risco Moderado (${totalRisco}%): Atenção! Recomenda-se pesquisar o assunto antes de repassar.`;
-            resultadoSimulador.style.border = "2px solid var(--accent-color)";
+        if (totalRiskValue === 0) {
+            resultadoSimulador.classList.add("sucesso");
+            resultadoSimulador.textContent = "Risco Mínimo (0%): A informação segue padrões comuns de segurança. Contudo, mantenha o hábito de checar.";
+        } else if (totalRiskValue <= 40) {
+            resultadoSimulador.classList.add("alerta-baixo");
+            resultadoSimulador.textContent = `Risco Moderado (${totalRiskValue}%): Atenção! Canais informais detectados. Recomenda-se pesquisar o assunto em portais oficiais.`;
         } else {
-            resultadoSimulador.textContent = `Risco Altíssimo (${totalRisco}%): Alerta de Fraude provável! Elementos típicos de desinformação por IA detectados. Não compartilhe!`;
-            resultadoSimulador.style.border = "2px solid #e53e3e"; // Alerta vermelho
+            resultadoSimulador.classList.add("alerta-alto");
+            resultadoSimulador.textContent = `Risco Crítico (${totalRiskValue}%): Alto perigo de desinformação automatizada detectado. Recomendamos não compartilhar!`;
         }
     });
 
-    // --- 4. PROCESSAMENTO E VALIDAÇÃO DO QUIZ ---
+    // ==========================================
+    // 5. VALIDADOR DO QUIZ ANTI-DESINFORMAÇÃO
+    // ==========================================
     const quizForm = document.getElementById("quiz-form");
-    const resultBox = document.getElementById("quiz-result");
+    const quizResultBox = document.getElementById("quiz-result");
 
     quizForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        const ans1 = quizForm.elements["q1"].value;
-        const ans2 = quizForm.elements["q2"].value;
-        const ans3 = quizForm.elements["q3"].value;
-        const ans4 = quizForm.elements["q4"].value;
-        
-        let scoreCounter = 0;
-        if (ans1 === "certo") scoreCounter += 1;
-        if (ans2 === "certo") scoreCounter += 1;
-        if (ans3 === "certo") scoreCounter += 1;
-        if (ans4 === "certo") scoreCounter += 1;
 
-        resultBox.classList.remove("hide");
-        resultBox.classList.add("sucesso");
+        const answerOne = quizForm.elements["q1"].value;
+        const answerTwo = quizForm.elements["q2"].value;
+        const answerThree = quizForm.elements["q3"].value;
+        const answerFour = quizForm.elements["q4"].value;
         
-        if (scoreCounter === 4) {
-            resultBox.textContent = `Excelente! Você acertou todas as ${scoreCounter} questões. Nível exemplar de Cidadania Digital!`;
-        } else if (scoreCounter >= 2) {
-            resultBox.textContent = `Bom desempenho! Você acertou ${scoreCounter} de 4 questões. Fique de olho nos sinais de fraude.`;
+        let correctAnswersCounter = 0;
+
+        if (answerOne === "certo") correctAnswersCounter += 1;
+        if (answerTwo === "certo") correctAnswersCounter += 1;
+        if (answerThree === "certo") correctAnswersCounter += 1;
+        if (answerFour === "certo") correctAnswersCounter += 1;
+
+        quizResultBox.classList.remove("hide");
+        quizResultBox.classList.add("sucesso");
+        
+        if (correctAnswersCounter === 4) {
+            quizResultBox.textContent = `Excelente trabalho! Você gabaritou acertando ${correctAnswersCounter} de 4 questões. Seus conhecimentos em Cidadania Digital são exemplares!`;
+        } else if (correctAnswersCounter >= 2) {
+            quizResultBox.textContent = `Bom resultado! Você acertou ${correctAnswersCounter} de 4 questões. Continue atento aos sinais técnicos para não ser enganado por manipulações de IA.`;
         } else {
-            resultBox.textContent = `Você acertou ${scoreCounter} de 4 questões. Revise o nosso guia prático para se proteger melhor.`;
+            quizResultBox.textContent = `Você acertou apenas ${correctAnswersCounter} de 4 questões. Recomendamos reler o nosso Guia Prático acima para reforçar sua segurança digital.`;
         }
-        resultBox.scrollIntoView({ behavior: 'smooth' });
+
+        quizResultBox.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // --- 5. CANAL DE DENÚNCIAS (COLETA E FEEDBACK DINÂMICO) ---
+    // ==========================================
+    // 6. CENTRAL DE DENÚNCIAS COM FEEDBACK REAL
+    // ==========================================
     const denunciaForm = document.getElementById("denuncia-form");
-    const denunciaResult = document.getElementById("denuncia-result");
+    const denunciaResultBox = document.getElementById("denuncia-result");
 
     denunciaForm.addEventListener("submit", (event) => {
         event.preventDefault();
         
-        // Coleta simulada das informações inseridas no formulário
-        const linkInformado = document.getElementById("midia-url").value;
-        
-        denunciaResult.classList.remove("hide");
-        denunciaResult.textContent = `Obrigado! Seu relato sobre a URL (${linkInformado}) foi armazenado com sucesso no ecossistema comunitário para análise técnica de nossos moderadores acadêmicos.`;
-        
-        denunciaForm.reset(); // Limpa os campos do formulário após o envio
-        denunciaResult.scrollIntoView({ behavior: 'smooth' });
+        const linkDigitado = document.getElementById("midia-url").value;
+
+        denunciaResultBox.classList.remove("hide");
+        denunciaResultBox.classList.add("alerta-baixo");
+        denunciaResultBox.textContent = `Sucesso! O link cadastrado (${linkDigitado}) foi registrado em nosso banco comunitário sob a hashtag do projeto. Agradecemos sua colaboração!`;
+
+        denunciaForm.reset();
+        denunciaResultBox.scrollIntoView({ behavior: 'smooth' });
     });
 });
